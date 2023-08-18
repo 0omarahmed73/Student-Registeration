@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<%- include('../components/head.ejs') %>
+<body>
+  <div class="container-both">
+    <%- include('../components/sidebar') %>
+        <div class="left-part">
+          <%- include('../components/nav') %>
+          <div class="mainSection2">
+            <div class="container">
+              <div class="both">
+                <div class="title-with-icon">
+                  <a onclick="location.href = document.referrer"><div class="backIcon">
+                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                  </div></a>
+                  <h2 class="slate-title">قائمة اللوائح</h2>
+                </div>
+                <div class="allSlates"> 
+                  <div class="slate">
+                    <div class="upperPart">
+                      <p>#</p>
+                      <p>اسم اللائحة</p>
+                      <p>سنة بدأ التطبيق</p>
+                      <div class="iconStd">
+                      </div>
+                    </div>
+                  </div> 
+              </div>
+              </div>
+        </div>
+      </div>
+    </div>  
+  </div>  
+  <script src="/main.js"></script> 
+  <script>
+    fetch('/slates.json' , {method : 'GET'})
+    .then(value => value.json())
+    .then(value => {
+      if (value.length > 0) {
+        console.log(value);
+        value.forEach((el , i) => {
+          document.querySelector('.allSlates').innerHTML += `
+          <div class="slate">
+                    <div class="upperPart">
+                      <p>${i+1}</p>
+                      <p>${el.slate_name}</p>
+                      <div class='bothPI'>
+                      <p>${el.year}</p>
+                      <div class="iconStd">
+                          <i class="fa fa-arrow-down" aria-hidden="true"></i></div>
+                        </div>
+                      </div>
+                        <div id='slate${el.code}' class='addedPart hiddenPart'>
+                        <div class='container2'>
+                        <div class='rowOfButtons'>
+                            <button>المراجعة الاولى</button>
+                            <button>اعتماد المراجعة الاولى</button>
+                            <button>مقاصد تحويل لائحة الانتساب</button>
+                            <button class='disabled'>نسخ اللائحة من</button>
+                        </div>                          
+                        <div class='rowOfButtons'>
+                            <button>الاعذار</button>
+                            <button><a href='/home/degrees/${el.code}'>الدرجات العلمية</a></button>
+                            <button>المراقبة العلمية</button>
+                            <button>التأجيل</button>
+                        </div>                          
+                        <div class='rowOfButtons'>
+                            <button>الغياب</button>
+                            <button>الإنقطاع</button>
+                            <button>الحذف والإضافة</button>
+                            <button>العبء الدراسي</button>
+                        </div>                          
+                          </div>
+                        </div>
+                    </div>
+                    `;
+                    
+      })
+      document.querySelectorAll('.slate .upperPart').forEach(el => {
+        el.addEventListener('click' , e => {
+          if (e.target === el || Array.from(el.children).includes(e.target) || e.target === el.querySelector('i')) {
+            el.parentElement.children[1].classList.toggle('hiddenPart');
+            el.querySelector('i').classList.toggle('rotateIconStd');
+          }
+        })
+        });
+      }
+      else {
+        document.querySelector('.allSlates').innerHTML += `<p class='noStds'>لا يوجد لوائح</p>`
+      }
+    })
+    .catch(err => console.log(err));
+  </script> 
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<%- include('../components/upperTerms.ejs') %>
+                      <button>دور الامتحانات</button>
+                      <div class="examsAndDivs">
+                        <% if (exams.length > 0) { exams.forEach(el => { %>
+                          <a class="hieraOne hieraDeg"><%= el.ardesc %></a>
+                          <% }) } else {%>
+                            <a class="hieraOne hieraDeg">لا يوجد دور امتحان مدخلة</a>
+                          <% } %>
+                      </div>
+                  </div>
+                    </div>
+                  </div> 
+              </div>
+              </div>
+        </div>
+      </div>
+    </div>  
+  </div>  
+  <script src="/main.js"></script> 
+  <script>
+    document.querySelector('.section').href = `${location.pathname}/show`
+    document.querySelector('.exam').href = `${location.pathname}/add`
+  </script>
+  <script>
+  </script> 
+</body>
+</html>

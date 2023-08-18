@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="shortcut icon" href="/Web 1920 – 1.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+  </head>
+  <body>
+    <div class="container">
+      <div class="img">
+        <img src="/image 1.png" alt="" />
+      </div>
+      <form class="form" action="/home" method="POST">
+        <h3 class="formTitle">بيانات الدخول</h3>
+        <div class="controller">
+          <input type="number" name="id" id="id" required placeholder="اسم المستخدم"/>
+          <i class="fa-solid fa-user"></i>
+        </div>
+        <div class="controller">
+          <input
+            type="password"
+            name="password"
+            id="password"
+            current-password
+            required
+            placeholder="كلمة المرور"
+          />
+          <i class="fa-solid fa-key"></i>
+        </div>
+        <button>تسجيل الدخول</button>
+        <p class="notfound"><%= notfound %></p>
+      </form>
+    </div>
+    <script>          
+    </script>
+  </body>
+</html>

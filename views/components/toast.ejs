@@ -1,0 +1,17 @@
+<div class="pop-up">
+  <% if(message.message) { %>
+    <div class="doneToast">
+      <div class="right">
+        <i class="fa-solid fa-check"></i>
+      </div>
+      <p>تمت العملية بنجاح</p>
+    </div>
+      <% } else if (message.error) {%>
+        <div class="errorToast">
+          <div class="right">
+            <i class="fa-solid fa-x"></i>
+          </div>
+          <p>الكود المدخل مكرر</p>
+          <% } %>
+</div>
+</div>                      

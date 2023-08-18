@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<%- include('./components/head.ejs') %>
+<body>
+  <div class="container-both">
+    <% if (name != '') { %>
+    <%- include('./components/sidebar') %>
+    <% } %>
+        <div class="left-part">
+            <%- include('./components/nav') %>
+          <div class="containerDone">
+    <h1 class="redirect">&#10003;</h1>
+    <p>تمت العملية بنجاح</p>
+    <p class="backP"> سيتم اعادة توجيهك الى الصفحة السابقة بعد <span>5</span></p>
+  </div>
+  </div>
+  </div>
+  <script src="/main.js"></script>
+  <script>
+    let clearInt = setInterval(() => {
+      document.querySelector('.backP span').innerText = parseInt(document.querySelector('.backP span').innerText) - 1;
+      if (document.querySelector('.backP span').innerText == 0) {
+        clearInterval(clearInt);
+        window.location.href = document.referrer;
+      }
+    } , 1000)
+
+  </script>
+</body>
+</html>

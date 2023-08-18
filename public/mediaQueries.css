@@ -1,0 +1,636 @@
+@media  (max-width: 500px){
+  .mainSection .container, .mainSection2 .container {
+    align-items: normal;
+  }
+  .doneToast , .errorToast {
+    padding: 11px 10px;
+  }
+  .sidebar {
+    top: 70px;
+    bottom: 200px;
+    left: 0;
+    width: 100%;
+    right: 0;
+    z-index: 1000;
+    transition: 0.5s ease-in-out;
+  }
+  .sidebar.hide {
+    background-color: transparent;
+    right: 0;
+    z-index: -1;
+  }
+  .sidebar.hide *{
+    opacity: 0;
+    position : absolute;
+    z-index: -1;
+    transition: 0s  !important;
+  }
+  .sidebar * {
+    transition: 0.5s ease-in-out;
+  }
+  nav {
+    z-index: 2000;
+  }
+  .nav-container {
+    /* position: relative; */
+    display: flex;
+    flex-direction: row !important;
+    align-items: center !important;
+    /* justify-content: center !important; */
+  }
+  .nav-arrow {
+    width: fit-content;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--mainColor);
+    z-index: 500;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+  }
+  .input-img .img {
+    display: none;
+  }
+  .nav-arrow i {
+    color: white;
+    transition: 0.5s;
+  }
+
+  .sidebar .arrow {
+    left: 50%;
+    transform: translateY(-50%);
+    bottom: -39px;
+    rotate: 269deg;
+    display: none;
+  }
+  .sidebar .icon {
+    position: absolute;
+    top: 18px;
+    right: 21px;
+  }
+  .opacity {
+    width: 100%;
+    top: 70px;
+  }
+.search {
+  display: none;
+}
+.mainSection2 .allStudents , .students , .mainSection2 .allSlates , .mainSection2 .allCert , .showDegrees{
+  width: 100% !important;
+}
+.allStudents .std .upperPart p {
+  font-weight: bold !important;
+  font-size: 12px !important;
+}
+.allStudents .std .upperPart p:nth-child(1){
+  width: 10%;
+  text-align: center;
+}
+.allStudents .std .upperPart  p:nth-child(2){
+  width: 20%;
+  text-align: center;
+} 
+.allStudents .std .upperPart .idAdded {
+  word-break: break-all;
+}
+.allStudents .std .upperPart  p:nth-child(3){
+  width: 30%;
+  text-align: center;
+} 
+.allStudents .std .upperPart  p:nth-child(4){
+  width: 20%;
+  text-align: center;
+}
+.allStudents .std .upperPart p:nth-child(5) {
+  width: 20%;
+  justify-content: start;
+  padding-right: 10px;
+  border-left: none;
+  text-align: center;
+}
+.allStudents .std .upperPart .bothPI {
+  width: 20%;
+  justify-content: center;
+  flex-direction: column;
+  border-left: none;
+}
+
+.allStudents .std .upperPart .bothPI p {
+  border-left: none;
+  width: 50%;
+}
+.student {
+  padding-inline: 10px;
+}
+.students .student p:first-of-type {
+  min-height: 70px;
+  padding-left: 10px;
+}
+.std .upperPart {
+  min-height: 50px;
+}
+.allStudents .iconStd {
+  /* margin-top: 17px; */
+}
+
+.addedPart .top {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.addedPart .top .texts {
+  text-align: center;
+}
+.gpa-button {
+  display: flex;
+  flex-direction: column !important;
+  /* justify-content: space-between; */
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+  /* padding-left: 10px; */
+}
+.bottom {
+  flex-direction: column !important;
+}
+.email-telephone {
+  display: flex;
+  flex-direction: column;
+}
+.bottom button {
+  margin-bottom: 10px;
+  width: 250px;
+  margin-inline: auto;
+
+}
+.allStudents .std .upperPart p {
+  padding-inline: 10px !important;
+}
+.allStudents .std {
+  overflow-x: hidden;
+}
+
+/* burgerMenu */
+.nav-arrow span {
+  width: 20px;
+  height: 3px;
+  background-color: white;
+  margin-bottom: 4px;
+  transition: 0.5s;
+}
+.nav-arrow.showen span:first-of-type {
+  opacity: 0;
+}
+.nav-arrow.showen span:nth-of-type(2) {
+  rotate: 46deg;
+  transform: translateX(5px);
+}
+.nav-arrow.showen span:last-of-type {
+  rotate: -47deg;
+  transform: translateX(5px);
+}
+  /* New Slate Form */
+  .newSlate form {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+  }
+  .newSlate form input:not(input[type='checkbox']) , #ardesc, #endesc, #notes {
+    width: 250px !important;
+  }
+  .newSlate form input {
+    margin-block: 5px;
+
+  }
+  .newSlate .control {
+    flex-direction: column !important;
+  }
+  .newSlate .control input {
+    margin-right: 0 !important;
+  }
+  .newSlate .bothcheck {
+    flex-direction: column;
+  }
+  .newSlate .bothcheck input[type='checkbox'] {
+    height: 20px;
+  }
+  .newSlate .checkControl{
+    flex-direction: row !important;
+    align-items: center;
+  }
+  .both-slate {
+    padding: 5px 10px !important;
+  }
+
+  .container2 .rowOfButtons {
+    display: flex;
+    gap: 2px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+   }
+   .given .buttons {
+    flex-direction: column;
+    /* text-align: left; */
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    margin-top: 12px;
+    align-items: center;
+   }
+   .given {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   }
+   .degree-with-input {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-direction: column;
+}
+.degree-with-input button {
+  margin: auto;
+}
+.degree-with-input input {
+  width: 100%;
+}
+.saveButtonDiv {
+  text-align: center;
+}
+ /* Hierarchy */
+ .hieraButtons {
+  flex-wrap: wrap;
+  margin-top: 10px;
+
+ }
+ .hiera .clickedDegree::before {
+  height: 25px !important;
+ }
+ .upperTitles {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.upperTitles .degName {
+  display: flex;
+  justify-content: center;
+  margin-top: 6px;
+
+}
+.upperTitles .degName p {
+  padding: 2px 10px;
+}
+.upperTitles  p:first-of-type{
+  width: 60%;
+  text-align: center;
+}
+.showAll .upperPart p {
+  font-size: 12px;
+  word-break: break-word;
+}
+.showAll .upperPart p.train {
+  border-left: none;
+  width: 17%;
+}
+.showContainer {
+  width: 95% !important;
+}
+.showAll .upperPart p.num {
+  width: 10%;
+}
+.showAll .upperPart p.code {
+  width: 20%;
+}
+.showContainer .slate-title {
+  font-size: 16px;
+}
+.allCert .control input{
+  margin-right: 0 !important;
+  flex: 10 !important;
+  width: 70% !important;
+ }
+ .allCert .control {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  margin-bottom: 5px;
+ }
+ .allCert .control label {
+  flex: 4 !important;
+  text-align: right;
+ }
+ 
+ .examsAndDivs a {
+  padding: 5px 25px;
+  text-align: center;
+ }
+ .examsAndDivs {
+  padding: 15px 25px;
+
+ }
+}
+
+/* Extra small devices (less than 576px) */
+@media (min-width: 500.98px) and (max-width: 575.98px) {
+  .doneToast , .errorToast {
+    padding: 11px 11px;
+  }
+  .sidebar {
+    width: 40%;
+  }
+  .sidebar.hide {
+    right: -40%;
+  }
+  
+  .opacity {
+    width: 60%;
+  }
+.search {
+  display: none;
+}
+.mainSection2 .allStudents , .students , .mainSection2 .allSlates , .mainSection2 .allCert , .showDegrees {
+  width: 490px;
+}
+.allStudents .std .upperPart p:nth-child(1){
+  width: 10%;
+  text-align: center;
+}
+.allStudents .std .upperPart  p:nth-child(2){
+  width: 20%;
+  text-align: center;
+} 
+.allStudents .std .upperPart  p:nth-child(3){
+  width: 40%;
+  text-align: center;
+} 
+.allStudents .std .upperPart  p:nth-child(4){
+  width: 20%;
+  text-align: center;
+}
+.allStudents .std .upperPart .bothPI {
+  width: 20%;
+  justify-content: space-between;
+  
+  border-left: none;
+}
+
+.allStudents .std .upperPart .bothPI p {
+  border-left: none;
+  width: 50%;
+}
+  /* New Slate Form */
+  .newSlate form {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+  }
+  .newSlate form input:not(input[type='checkbox']) , #ardesc, #endesc, #notes {
+    width: 250px !important;
+  }
+  .newSlate form input {
+    margin-block: 5px;
+
+  }
+  .newSlate .control {
+    flex-direction: column !important;
+  }
+  .newSlate .control input {
+    margin-right: 0 !important;
+  }
+  .newSlate .bothcheck {
+    flex-direction: column;
+  }
+  .newSlate .bothcheck input[type='checkbox'] {
+    height: 20px;
+  }
+  .newSlate .checkControl{
+    flex-direction: row !important;
+    align-items: center;
+  }
+  .both-slate {
+    padding: 5px 40px !important;
+  }
+  .container2 .rowOfButtons {
+    display: flex;
+    gap: 2px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+   }
+   .given .buttons {
+    flex-direction: column;
+    text-align: left;
+    display: flex;
+    gap: 5px;
+   }
+    /* Hierarchy */
+ .hieraButtons {
+  flex-wrap: wrap;
+ }
+ .upperTitles {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.upperTitles .degName {
+  display: flex;
+  justify-content: center;
+}
+.showAll .upperPart p {
+  font-size: 13px;
+  word-break: break-word;
+}
+.showAll .upperPart p.train {
+  border-left: none;
+  width: 15%;
+}
+
+.allCert .control input{
+  margin-right: 0 !important;
+  flex: 4 !important;
+ }
+ .allCert .control {
+  display: flex !important;
+ }
+ .form-container .control label {
+  flex: 4 !important;
+ }
+ /* .showDegrees {
+  margin: 10px 0;
+ } */
+}
+
+/* Small devices (576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .sidebar {
+    width: 40%;
+  }
+  .sidebar.hide {
+    right: -40%;
+  }
+  
+  .opacity {
+    width: 60%;
+  }
+  nav .input-img input {
+    padding: 3px 15px 3px 40px;
+}
+.mainSection2 .allStudents  {
+  width: 570px;
+}
+ .allSlates , .mainSection2 .allCert {
+  width: 530px;
+}
+.allStudents .std .upperPart p:nth-child(1){
+  width: 10%;
+}
+.allStudents .std .upperPart  p:nth-child(2){
+  width: 20%;
+} 
+.allStudents .std .upperPart  p:nth-child(3){
+  width: 40%;
+} 
+.allStudents .std .upperPart  p:nth-child(4){
+  width: 20%;
+}
+.allStudents .std .upperPart p:nth-child(5){
+  width: 20%;
+  justify-content: start;
+  padding-right: 10px;
+  border-left: none;
+}
+.allStudents .std .upperPart .bothPI {
+  width: 20%;
+  justify-content: space-between;
+  
+  border-left: none;
+}
+
+.allStudents .std .upperPart .bothPI p {
+  border-left: none;
+  width: 50%;
+}
+  /* New Slate Form */
+  .newSlate form {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+  }
+  .newSlate form input:not(input[type='checkbox']) , #ardesc, #endesc, #notes {
+    width: 250px !important;
+  }
+  .newSlate form input {
+    margin-block: 5px;
+
+  }
+  .newSlate .control {
+    flex-direction: column !important;
+  }
+  .newSlate .control input {
+    margin-right: 0 !important;
+  }
+  .newSlate .bothcheck {
+    flex-direction: column;
+  }
+  .newSlate .bothcheck input[type='checkbox'] {
+    height: 20px;
+  }
+  .newSlate .checkControl{
+    flex-direction: row !important;
+    align-items: center;
+  }
+ .container2 .rowOfButtons {
+  display: flex;
+  gap: 2px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+ }
+
+ /* Hierarchy */
+ .hieraButtons {
+  flex-wrap: wrap;
+ }
+ .allCert .showAll p {
+  word-wrap: break-word;
+ }
+ .allCert .control input{
+  margin-right: 0 !important;
+ }
+ .allCert .control {
+  display: flex !important;
+ }
+ .upperTitles {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.upperTitles .degName {
+  display: flex;
+  justify-content: center;
+  margin-top: 6px;
+
+}
+.upperTitles .degName p {
+  padding: 2px 10px;
+}
+.upperTitles  p:first-of-type{
+  width: 50%;
+  text-align: center;
+}
+}
+
+/* Medium devices (768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .sidebar {
+    width: 30%;
+  }
+  .sidebar.hide {
+    right: -30%;
+}
+  
+  .opacity {
+    width: 70%;
+  }
+
+  /* New Slate Form */
+  .newSlate .control {
+    flex-direction: column !important;
+  }
+  .newSlate .control input {
+    margin-right: 0 !important;
+  }
+  .newSlate .bothcheck {
+    flex-direction: column;
+  }
+  .newSlate .bothcheck input[type='checkbox'] {
+    height: 20px;
+  }
+  .newSlate .checkControl{
+    flex-direction: row !important;
+    align-items: center;
+  }
+
+}
+
+/* Large devices (992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  /* CSS styles for large devices go here */
+}
+
+/* Extra large devices (1200px and up) */
+@media (min-width: 1200px) {
+  /* CSS styles for extra large devices go here */
+}

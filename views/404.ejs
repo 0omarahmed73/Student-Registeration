@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<%- include('./components/head.ejs') %>
+<body>
+  <div class="container-both">
+    <% if (name != '') { %>
+    <%- include('./components/sidebar') %>
+    <% } %>
+        <div class="left-part">
+            <%- include('./components/nav') %>
+          <div class="container404">
+    <h1>404</h1>
+    <p>!Page Not Found</p>
+  </div>
+  </div>
+  </div>
+  <script src="/main.js"></script>
+</body>
+</html>

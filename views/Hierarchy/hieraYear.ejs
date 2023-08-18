@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<%- include('../components/head.ejs') %>
+<body>
+  <%- include('../components/slatesUpperPart.ejs') %>
+        </div>
+      </div>
+    </div>  
+  </div>  
+  <script src="/main.js"></script> 
+  <script>
+    function returnBack(){
+      window.location.href = document.referrer;
+    }
+    fetch('/slates.json' , {method : 'GET'})
+    .then(value => value.json())
+    .then(value => {
+      if (value.length > 0) {
+        console.log(value);
+        value.forEach((el , i) => {
+          document.querySelector('.allSlates').innerHTML += `
+          <div class="slate">
+                    <div class="upperPart">
+                      <p>${i+1}</p>
+                      <p>${el.slate_name}</p>
+                      <div class='bothPI'>
+                      <p>${el.year}</p>
+                      <div class="iconStd">
+                          <i class="fa fa-arrow-down" aria-hidden="true"></i></div>
+                        </div>
+                      </div>
+                        <div id='slate${el.code}' class='addedPart hiddenPart'>
+                        <div class='container2'>
+                        <div class='rowOfButtons'>
+                            <button>المراجعة الاولى</button>
+                            <button>اعتماد المراجعة الاولى</button>
+                            <button>مقاصد تحويل لائحة الانتساب</button>
+                            <button class='disabled'>نسخ اللائحة من</button>
+                        </div>                          
+                        <div class='rowOfButtons'>
+                            <button>الاعذار</button>
+                            <button><a href='/home/degrees/${el.code}'>الدرجات العلمية</a></button>
+                            <button>المراقبة العلمية</button>
+                            <button>التأجيل</button>
+                        </div>                          
+                        <div class='rowOfButtons'>
+                            <button>الغياب</button>
+                            <button>الإنقطاع</button>
+                            <button>الحذف والإضافة</button>
+                            <button>العبء الدراسي</button>
+                        </div>                          
+                          </div>
+                        </div>
+                    </div>
+                    
+                    `;
+                    
+      })
+      document.querySelectorAll('.slate .upperPart').forEach(el => {
+        el.addEventListener('click' , e => {
+          if (e.target === el || Array.from(el.children).includes(e.target) || e.target === el.querySelector('i')) {
+            el.parentElement.children[1].classList.toggle('hiddenPart');
+            el.querySelector('i').classList.toggle('rotateIconStd');
+          }
+        })
+        });
+      }
+    })
+    .catch(err => console.log(err));
+    fetch('/home/degrees.getCode/:code' , {method : 'GET'})
+    .then(value => value.json())
+    .then(value => {
+      let vrrr = window.location.pathname.slice(window.location.pathname.indexOf('hierarchy')+10)
+      setTimeout(() => {
+              fetch(`/home/degrees/${value}/save.updateSlates`)
+      .then(value => value.json())
+      .then(value2 => {
+        if (value2[0].degree.trim() !== ''){
+        setTimeout(() => {
+          document.querySelector('.addDegree-container').innerHTML += `
+          <div class="hiera">
+        <div class='upperTitles'>
+              <p>هيكل الفرق الدراسية : </p>
+              <div class='degName'>
+                <p class='hieraOne hieraDeg'>${sessionStorage.getTeam}</p>
+                </div>
+                </div>
+                <div class='subPoints'>
+              
+            </div>
+                <div class='hieraButtons'>
+                  <button>إضافة درجة علمية جديدة دراسة جديدة</button>
+                  <a href='/home/degrees/${value}/hierarchy/add-sub-point/${location.pathname.split("/")[5]}'>
+                    <button>إضافة نقطة فرعية</button>
+                  </a>
+                  <button>تعديل بيانات</button>
+                  <button>حذف</button>
+                  </div>
+                  <div  class='returnBack'>
+                    <button onclick='returnBack()'>رجوع</button>
+                  </div>
+                  </div>
+          `
+          fetch(`/home/degrees/hierarchy/${vrrr}/subpointjsonGet` , {method : 'GET'})
+          .then(value3 => value3.json())
+          .then(value3 => {
+            console.log(value3);
+            console.log(value3.length);
+            if (value3[1].length > 0){
+            value3[1].forEach(el => {
+              document.querySelector('.subPoints').innerHTML += `
+              <a style='color : black' href='/home/degrees/${value}/hierarchy/${location.pathname.split("/")[5]}/${el.code}'>
+                <div class='subpoint hieraDeg'>${el.naturalPoint} : ${el.ardesc}</div>
+                </a>
+              `;
+            })
+            }
+            else if (value3[1].length === 0) {
+              document.querySelector('.subPoints').innerHTML += `
+              <div class='subpoint hieraDeg'>لا يوجد نقاط فرعية مدخلة</div>
+              `;  
+            }
+          })
+          .catch(err => console.log(err));
+          document.querySelector('.hieraOne').addEventListener('click' , (e) => {
+            e.target.classList.toggle('clickedDegree');
+            setTimeout(() => {
+              document.querySelector('.hieraButtons').classList.toggle('hideHieraButtons');
+              document.querySelector('.subPoints').classList.toggle('showSubPoints')
+            } , 100)
+          })
+        },100)
+      }
+      else {
+        setTimeout(() => {
+          document.querySelector('.showDegrees').innerHTML = `
+          <div class="slate">
+          <div class="upperPart">
+          <p>الدرجات العلمية</p>
+          </div>
+          </div> 
+          <div class="slate">
+            <div class="upperPart">
+                <p class='noStd' style='justify-content : center'>لا يوجد درجة علمية مدخلة</p>
+            </div>
+          </div>`
+        },100)
+
+      }
+      })
+      .catch(err => console.log(err));
+        document.querySelector(`#slate${value}`).classList.remove('hiddenPart');
+        document.querySelector(`#slate${value}`).parentElement.querySelector('.iconStd i').classList.add('rotateIconStd')
+        document.querySelector(`#slate${value}`).innerHTML = `          
+                        <div class='container2 addDegree-container hierarchyContainer'>
+                          
+                        </div>
+                    `;
+        },100)
+    })
+    .catch(err => console.log(err));
+  </script> 
+</body>
+</html>

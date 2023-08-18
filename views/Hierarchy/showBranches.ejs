@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<%- include('../components/head.ejs') %>
+<body>
+  <div class="container-both">
+    <%- include('../components/sidebar') %>
+        <div class="left-part">
+          <%- include('../components/nav') %>
+          <div class="mainSection2">
+            <div class="container">
+              <div class="both">
+                <div class="title-with-icon">
+                  <a onclick="window.history.back()"><div class="backIcon">
+                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                  </div></a>
+                  <h2 class="slate-title">قسم <%= section %></h2>
+                </div>
+                <div class="allSlates"> 
+                  <div class="getAll">
+                      <button><%= section %></button>
+                      <div class="examsAndDivs">
+                        <% if (branches.length > 0) { branches.forEach(el => { %>
+                          <a href="/home/section/<%= el.section_code %>/<%= el.branch_code %>" class="hieraOne hieraDeg">شعبة : <%= el.branch_name %> </a>
+                          <% }) } else {%>
+                            <a class="hieraOne hieraDeg">لا يوجد شعب مدخلة</a>
+                            <% } %>
+                          </div>
+                        </div>
+                        <div class="addNewBranch">
+                          <a><button>اضافة شعبة جديدة</button></a>
+                        </div>
+                    </div>
+                  </div> 
+              </div>
+              </div>
+        </div>
+      </div>
+    </div>  
+  </div>  
+  <script src="/main.js"></script> 
+  <script>
+    document.querySelector('.addNewBranch a').href = `${location.pathname}/addNewBranch`
+    if(performance.navigation.type == 2){
+   location.reload(true);
+}
+  </script>
+  <script>
+  </script> 
+</body>
+</html>

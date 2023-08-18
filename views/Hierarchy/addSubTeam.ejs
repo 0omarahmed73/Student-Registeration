@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<%- include('../components/head.ejs') %>
+<body>
+  <div class="container-both">
+    <%- include('../components/sidebar') %>
+        <div class="left-part">
+          <%- include('../components/nav') %>
+          <div class="mainSection2">
+            <div class="container">
+              <div class="both">
+                <div class="title-with-icon">
+                  <a onclick="done()"><div class="backIcon">
+                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                  </div></a>
+                  <h2 class="slate-title">اضافة نقطة فرعية</h2>
+                </div>
+                <div class="allCert"> 
+                  <div class="cert">
+                    <div class="upperPart">
+                      <p class="certificateName">اسم الفرقة الدراسية</p>
+                      <p class="certificateName added"><%= passedTeam %></p>
+                    </div>
+                  </div> 
+                  <div class="cert">
+                    <div class="upperPart added">
+                    </div>
+                    <div class="addedPart">
+                      <form class="ourForm" action="" method="post">
+                        <div class="form-container">
+                          <div class="control">
+                            <input style="margin-right: 0;" type="text" name="slateCode" id="slateCode" value="<%= passedCode%>" hidden>
+                          </div>
+                          <div class="control afterHidden">
+                            <label for="natural">طبيعة النقطة<span> *</span></label>
+                            <input style="margin-right: 0;" type="text" name="natural" id="natural" required>
+                          </div>
+                          <div class="control">
+                            <label for="level">فرقة / مستوى<span> *</span></label>
+                            <input style="margin-right: 0;" type="text" name="level" id="level" required>
+                          </div>
+                          <div class="control">
+                            <label for="main">النقطة الرئيسية</label>
+                            <input style="margin-right: 0;" type="text" name="main" id="main" value="<%= passedTeam %>" readonly>
+                          </div>
+                          <div class="control control-grid">
+                            <label for="pointCode" id="pointCode2">كود النقطة الحالية</label>
+                            <input style="margin-right: 40px;" type="number" name="pointCode" id="pointCode" >
+                          </div>
+                          <div class="control">
+                            <label for="subPointArDesc">وصف الشهادة باللغة العربية<span> *</span></label>
+                            <input style="margin-right: 0;" type="text" name="subPointArDesc" id="subPointArDesc" required>
+                          </div>
+                          <div class="control">
+                            <label for="subPointEnDesc">وصف الشهادة باللغة الانجليزية</label>
+                            <input style="margin-right: 0;" type="text" name="subPointEnDesc" id="subPointEnDesc" >
+                          </div>
+                          <div class="control control-grid">
+                            <label for="order" id="order2">الترتيب في الظهور <span>*</span></label>
+                            <input style="margin-right: 40px;" type="number" name="order" id="order" required>
+                          </div>
+                          
+                          <div class="control2">
+                            <label for="hideIt">إخفاء من الظهور  في الشاشات الفرعية ؟</label>
+                            <input type="checkbox" name="hide" id="hide" >
+                          </div>
+                          <div class="buttons">
+                            <a><button>حفظ</button></a>
+                            <a class="button" onclick="done()"><div >إلغاء</div></a>
+                          </div>
+                        </div> 
+                        <%- include('../components/toast.ejs') %>                           
+                      </form>
+                    </div>
+                  </div> 
+              </div>
+              </div>
+          </div>
+      </div>
+    </div>  
+  </div>  
+  <script src="/main.js"></script> 
+  <script>
+        function returnBack(){
+      window.location.href = document.referrer;
+    }
+
+    window.sessionStorage.setItem(document.querySelectorAll('input')[0].id , '' )
+    document.querySelectorAll('input').forEach(el => {
+      console.log(el);
+      if (el !== document.querySelector("#hide") && el !== document.querySelector("#main") ){
+      if (window.sessionStorage.getItem(el.id) ) {
+        el.value = window.sessionStorage.getItem(el.id)
+      }
+      else {
+        el.value = '';
+      }
+    }
+    else if (el === document.querySelector("#hide")) {
+      if (window.sessionStorage.getItem(el.id)) {
+        el.checked = window.sessionStorage.getItem(el.id) === 'true' ? true : false
+        console.log(el.checked)
+        console.log(window.sessionStorage.getItem(el.id))
+      }
+      else {
+        el.checked = false;
+      }
+    }
+    if (el !== document.querySelector("#hide")){
+      el.addEventListener('input' , () => {
+      window.sessionStorage.setItem(el.id , el.value)
+        })
+    }
+        else {
+          el.addEventListener('change' , () => {
+          window.sessionStorage.setItem(el.id , el.checked)
+          el.value = el.checked.toString() === 'true' ? 1 : 0
+          console.log(el.value);
+        })
+      }
+      })
+      document.querySelector('.ourForm').action = `/home/degrees/${location.pathname.split('/')[3]}/hierarchy/${location.pathname.split('/')[6]}/submitSubTeams`
+  </script> 
+</body>
+</html>

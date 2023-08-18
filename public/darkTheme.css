@@ -1,0 +1,87 @@
+:root {
+  --mainColor: #072E53;
+  --newMainColor : #04213c;
+}
+
+body.dark *::selection {
+  color: var(--mainColor);
+  background-color: white;
+}
+body.dark {
+  background-color: var(--newMainColor);
+  color: white;
+}
+
+body.dark button , body.dark .button {
+  box-shadow: 0px 1px 11px 0px #00000039;
+}
+body.dark .card  , body.dark .students , body.dark .student , body.dark .students .title , body.dark .allStudents , body.dark .allSlates , body.dark .allCert{
+  background-color: transparent;
+  border-color: rgba(255, 255, 255, 0.502) !important;
+}
+
+body.dark .icon-admin {
+  background-color: var(--mainColor);
+}
+body.dark .icon-admin i {
+  color: white !important;
+}
+
+body.dark .upperPart p:not(.bothPI * , .allStudents .std .upperPart p:nth-child(5) , .slate .upperPart p:nth-child(3) , .textWithIcon p) {
+  border-left: 1px solid  rgba(255, 255, 255, 0.502) !important;
+}
+
+body.dark .upperPart , body.dark .addedPart{
+  border-bottom: 1px solid  rgba(255, 255, 255, 0.502) !important;
+}
+
+body.dark .hieraDeg , body.dark .examsAndDivs a{
+  color: var(--mainColor);
+  background-color: white;
+  border-color: var(--mainColor) !important;
+}
+/* Scroll Bar */
+
+body.dark div::-webkit-scrollbar,
+body.dark .allSlates::-webkit-scrollbar {
+  width: 7px;
+  border-radius: 40px;
+}
+
+body.dark div::-webkit-scrollbar-track,
+body.dark .allSlates::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.587);
+  border-radius: 40px;
+}
+
+body.dark div::-webkit-scrollbar-thumb,
+body.dark .allSlates::-webkit-scrollbar-thumb {
+  background-color: rgb(181, 178, 178) !important;
+  border-radius: 40px;
+}
+
+body.dark .hiera .clickedDegree::before , body.dark .getAll button::after{
+  background-color: white;
+}
+
+body.dark .hieraDeg:hover , body.dark .examsAndDivs a:hover {
+  background-color: transparent !important;
+  color: white !important;
+  border-color: white !important;
+}
+
+body.dark input {
+  background-color: #ffffff;
+  border: 1px solid;
+  color: black;
+}
+
+body.dark input::selection {
+  background-color: var(--mainColor);
+  color: white;
+}
+
+body.dark .redirect {
+  background-color: white;
+  color: var(--mainColor);
+}

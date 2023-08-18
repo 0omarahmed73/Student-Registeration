@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<%- include('../components/head.ejs') %>
+<body>
+  <div class="container-both">
+    <%- include('../components/sidebar') %>
+        <div class="left-part">
+          <%- include('../components/nav') %>
+          <div class="mainSection2">
+            <div class="container showContainer">
+              <div class="both">
+                <div class="title-with-icon">
+                  <a onclick="returnBack2()"><div class="backIcon">
+                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                  </div></a>
+                  <h2 class="slate-title">الشهادات الممنوحة حسب اللائحة</h2>
+                </div>
+                <div class="allCert showAll"> 
+                  <div class="cert">
+                    <div class="upperPart">
+                      <p class="certificateName">اسم الدرجة العلمية</p>
+                      <p class="certificateYear">سنة بدأ التطبيق</p>
+                    </div>
+                  </div> 
+                  <div class="cert">
+                    <div class="upperPart added">
+                      <p class="certificateName added"><%= passedDegree %></p>
+                      <p class="certificateYear added"><%= passedYear %></p>
+                    </div>
+                    <div class="addedPart divOfAllCert">
+                      <div class="upperPart">
+                        <p class="num">#</p>
+                        <p class="dep">الشعبة / القسم</p>
+                        <p class="code">كود الشهادة</p>
+                        <p class="ardesc">وصف الشهادة باللغة العربية</p>
+                        <p class="endesc">وصف الشهادة باللغة الإنجليزية</p>
+                        <p class="train">لها سنة تدريبية ؟</p>
+                      </div>  
+                    </div>
+                    <div class="addCert">
+                        <a href="/home/degrees/<%=passedCode %>/givenCertificates">
+                          <button>اضافة شهادة جديدة</button>
+                        </a>
+                    </div>
+                  </div> 
+              </div>
+              </div>
+          </div>
+      </div>
+    </div>  
+  </div>  
+  <script src="/main.js"></script> 
+  <script>
+    function returnBack2() {
+      window.history.back();
+    }
+    console.log(`${window.location.href}.json`);
+    fetch(`/home/degrees/:id/showIt` , {method : 'GET'})
+    .then(value => value.json())
+    .then(value => {
+      if (value.length > 0) {
+        value.forEach((el , i) => {
+        document.querySelector('.divOfAllCert').innerHTML += `
+        <div class="upperPart">
+                        <p class="num">${i+1}</p>
+                        <p class="dep">${el.divSection}</p>
+                        <p class="code">${el.certificate_code}</p>
+                        <p class="ardesc">${el['ar_desc']}</p>
+                        <p class="endesc">${el['en_desc']}</p>
+                        <p class="train">${el.trainningYear == '1' ? 'نعم' : 'لا'}</p>
+                      </div>  
+        `;
+      });
+      }
+      else {
+        document.querySelector('.divOfAllCert').innerHTML += `
+        <p class='noStds' style='margin-top : 10px !important'>لا يوجد شهادات مضافة</p>
+        `
+      }
+    })
+    .catch(err => console.log(err));
+    if(performance.navigation.type == 2){
+   location.reload(true);
+}
+  </script> 
+</body>
+</html>

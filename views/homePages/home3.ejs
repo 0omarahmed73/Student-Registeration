@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+  <%- include('../components/head') %>  
+  <body class="dark">
+<div class="container-both">
+  <%- include('../components/sidebar') %>
+      <div class="left-part">
+        <%- include('../components/nav') %>
+        <div class="mainSection">
+          <div class="container">
+            <div class="cards">
+                <div class="card card-admin">
+                  <a href="/home/add-new-slate"><div class="icon-admin">
+                    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                  </div></a>
+                    <i class="fa fa-file" aria-hidden="true"></i>
+                  <p class="rules">إضافة لائحة جديدة</p>  
+                </div>
+            <div class="card card-admin">
+              <a href="/home/edit-slates"><div class="icon-admin">
+                  <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                </div></a>
+                <i class="fa fa-file" aria-hidden="true"></i>
+                <p class="rules">تعديل لائحة سابقة</p>  
+              </div>
+        </div>
+              <div class="students">
+                <div class="title">
+                  <h4>قائمة الطلاب</h4>
+                  <a class="i" href="/home/students"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                </div>
+      </div>
+    </div>
+  </div>  
+</div>  
+<script src="./main.js"></script>
+<script>
+      fetch('/home3.json' , {method : 'GET'})
+        .then(value => value.json())
+        .then(value => {
+          if (value.length > 0){
+          value.forEach(el => {
+            let student = document.createElement('div')
+            student.classList.add('student');
+            student.innerHTML = `
+                <p class="id">${el.id}</p>
+                <p class="name"> ${el.name}</p>
+                <div class="information"><a href="/home/students/${el.id}"><button>عرض المعلومات</button></a>
+              `;
+              document.querySelector('.students').append(student);
+          })
+        }
+        else {
+          document.querySelector('.std-nums .digit').innerText = `${value.length} طالب`
+          document.querySelector('.students').innerHTML += `<p class='noStds'>لا يوجد طلاب</p>`
+        }
+        })
+        .catch(err => console.log(err));
+    </script>
+  </body>
+</html>

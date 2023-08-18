@@ -1,0 +1,45 @@
+<section class="sidebar hide">
+  <div class="themeChange">
+    <div class="iconDiv">
+      <i class="fa-solid fa-sun"></i>
+    </div>
+  </div>
+  <div class="img"><a href="/home"><img src="/image 1.png" alt="" /></a></div>
+  <div class="links">
+    <p>مرحبا 
+      <% if (status == 1 || status == 2) { %>
+      د/<%= name %></p>
+      <% } else { %>
+        <span><%= name %></p>
+        <% } %>
+        <% if (status == 0) { %> 
+          <p> <a href="#">تقديم طلب لتسجيل المواد</a></p>
+          <p> <a href="#">تقديم شكوى</a></p>
+          <p> <a href="#">الطلبات السابقة</a></p>
+          <p> <a href="#">المرشد الاكاديمي</a></p>
+          <p> <a href="#">الشكاوى</a></p>      
+          <% } else if (status == 1) { %>
+            <p> <a href="#">تسجيل المواد</a></p>
+            <p> <a href="#">طلبات الطلاب</a></p>
+            <p> <a href="#">اضافة طلب جديد</a></p>
+            <p> <a href="/home/students">الطلاب</a></p>
+            <p> <a href="#">الشكاوى</a></p>        
+          <% } else if (status == 2) { %>
+            <p> <a href="/home/add-new-slate">اضافة لائحة جديدة</a></p>
+            <p> <a href="/home/edit-slates">عرض اللوائح السابقة</a></p>
+            <p> <a href="#">اضافة طالب جديد</a></p>
+            <p> <a href="/home/students">الطلاب</a></p>
+            <p> <a href="#">الإعلانات الهامة</a></p>        
+            <% } %>
+        <form action="/logout" method="get">
+      <div class="icon">
+        <i class="fa-solid fa-right-from-bracket"></i>
+      </div>  
+    </form>
+    </div>
+  <div class="arrow">
+    <i class="fa fa-angle-right" aria-hidden="true"></i>
+  </div>
+</section>
+
+<div class="opacity hide"></div>

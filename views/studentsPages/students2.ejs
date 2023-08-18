@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<%- include('../components/head.ejs') %>
+<body>
+  <div class="container-both">
+    <%- include('../components/sidebar') %>
+        <div class="left-part">
+          <%- include('../components/nav') %>
+          <div class="mainSection2">
+            <div class="container">
+              <div class="both">
+                <div class="title-with-icon">
+                  
+                  <a onclick="history.back()"><div class="backIcon">
+                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                  </div></a>
+                  <h2 class="slate-title">قائمة الطلاب</h2>
+                </div>                <div class="allStudents"> 
+                  <div class="std">
+                    <div class="upperPart">
+                      <p>#</p>
+                      <p>الرقم الجامعي</p>
+                      <p>اسم الطالب</p>
+                      <p>المعدل التراكمي</p>
+                      <p>حالة الطالب</p>
+  
+                    </div>
+                  </div> 
+              </div>
+              </div>
+        </div>
+      </div>
+    </div>  
+  </div>  
+  <script src="/main.js"></script>
+  <script>
+    fetch('/home3.json' , {method : 'GET'})
+    .then(value => value.json())
+    .then(value => {
+      if (value.length > 0){
+      value.forEach((el,i) => {
+        document.querySelector('.allStudents').innerHTML += `                  <div class="std">
+                    <div class='upperPart'>
+                      <p>${i+1}</p>
+                    <p class='idAdded'>${el.id}</p>
+                    <p>${el.name}</p>
+                    <p>${el.gpa}</p>
+                    <div class='bothPI'>
+                      <p>${el.status}</p>
+                      <div class="iconStd">
+                          <i class="fa fa-arrow-down" aria-hidden="true"></i></div>
+                        </div>
+                      </div>
+                      <div id='std${el.id}' class='addedPart hiddenPart'>
+                        <div class='container2'>
+                        <div class='top'>
+                            <div class='img'>
+                              <img src='${el.img}'/>
+                              </div>
+                            <div class='texts'>
+                              <p>الاسم : ${el.name}</p>
+                              <p>الحالة : ${el.status}</p>
+                              <p>عدد الساعات المنتهى منها : ${el.endedHours}</p>
+                              <p>عدد الساعات المتبقية : ${170 - el.endedHours }</p>
+                              <div class='gpa-button'>
+                                <p>المعدل التراكمي : ${el.gpa}</p>
+                              </div>
+                              </div>
+                              </div>
+                              <div class='bottom'>
+                                <div class='email-telephone'>
+                                  <button>${el.telephone}  <i class="fa fa-phone" aria-hidden="true"></i></button>
+                                  <button>${el.email}  <i class="fa fa-envelope" aria-hidden="true"></i></button>
+                                </div>
+                                <button>تعديل معلومات الطالب</button>
+                                </div>
+                          </div>
+                        </div>
+                    </div>
+                    `;
+                    
+      })
+      document.querySelectorAll('.std .upperPart').forEach(el => {
+        el.addEventListener('click' , e => {
+          if (e.target === el || Array.from(el.children).includes(e.target) || e.target === el.querySelector('i')) {
+            el.parentElement.children[1].classList.toggle('hiddenPart');
+            el.querySelector('i').classList.toggle('rotateIconStd');
+          }
+        })
+      })
+    }
+    else {
+      document.querySelector('.allStudents').innerHTML += `<p class='noStds'>لا يوجد طلاب</p>`
+    }
+    })
+    .catch(err => console.log(err));
+    fetch('/home/students.getID/:id' , {method : 'GET'})
+    .then(value => value.json())
+    .then(value => {
+      setTimeout(() => {
+        if (window.location.href === `http://localhost:3000/home/students/${value}` ) {
+          document.getElementById(`std${value}`).classList.remove('hiddenPart');
+          document.querySelector(`#std${value}`).parentElement.querySelector('.iconStd i').classList.add('rotateIconStd');
+        }
+        else {
+          value = '';
+        }
+      } , 100)
+    })
+    .catch(err => console.log(err));
+  </script>
+</body>
+</html>

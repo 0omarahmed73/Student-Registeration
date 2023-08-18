@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<%- include('../components/upperTerms.ejs') %>
+                      <button>دور الامتحانات</button>
+                      <div class="examsAndDivs">
+                        <a class="hieraOne hieraDeg section">عرض</a>
+                        <a class="hieraOne hieraDeg exam">اضافة</a>
+                      </div>
+                  </div>
+                    </div>
+                  </div> 
+              </div>
+              </div>
+        </div>
+      </div>
+    </div>  
+  </div>  
+  <script src="/main.js"></script> 
+  <script>
+    document.querySelector('.section').href = `${location.pathname}/show`
+    document.querySelector('.exam').href = `${location.pathname}/add`
+  </script>
+  <script>
+  </script> 
+</body>
+</html>

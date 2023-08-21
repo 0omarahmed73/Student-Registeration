@@ -99,7 +99,7 @@
     .then(value => {
       
       setTimeout(() => {
-        if (window.location.href === `http://localhost:3000/home/students/${value}` ) {
+        if (window.location.pathname === `/home/students/${value}`) {
           document.getElementById(`std${value}`).classList.remove('hiddenPart');
           document.querySelector(`#std${value}`).parentElement.querySelector('.iconStd i').classList.add('rotateIconStd')
         }

@@ -5,7 +5,7 @@ const app = express();
 const dbConnection = mysql.createConnection({
   host : 'sql209.liveblog365.com',
   user : 'lblog_34866162',
-  password : 'Oo123456',
+  password : 'rf56nyugakk',
   database : 'lblog_34866162_studentReg',
   port : 3306
 });

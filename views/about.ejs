@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+  <%- include('./components/head') %>  <body>
+<div class="container-both">
+  <%- include('./components/sidebar') %>
+      <div class="left-part">
+        <%- include('./components/nav') %>
+        <div class="mainSection">
+          <div class="container">
+            <h1>من نحن ؟</h1>
+            <p>نحن طلاب من قسم هندسة الاتصالات والحاسبات - هندسة شبرا</p>
+            <p>وتحت اشراف د/لمياء رفاعي ووحدة تكنولوجيا المعلومات بالكلية</p>
+            <p>نسعى بكل جهودنا الى الصعود بمستوى الكلية الى اعلى مستوى</p>
+            <div class="texts">
+              <p>1- عمر احمد سعيد السيد</p>
+              <p>2- كريم بلال علي</p>
+              <p>3- مصطفى احمد حسن سالم</p>
+              <p>4- محمد عبد الغني عبد ربه</p>
+              <p>5- احمد محمد محمد السيد</p>
+              <p>6- آية عبد المنعم جابر</p>
+            </div>
+    </div>
+  </div>  
+</div>  
+<script src="./main.js"></script>
+<script>
+      fetch('/home.json' , {method : 'GET'})
+        .then(value => value.json())
+        .then(value => {
+          if (value.length > 0){
+          document.querySelector('.std-nums .digit').innerText = `${value.length} طالب`
+          if (value.length > 4) {
+            value.length = 4
+          }
+          value.forEach(el => {
+            let student = document.createElement('div')
+            student.classList.add('student');
+            student.innerHTML = `
+                <p class="id">${el.id}</p>
+                <p class="name"> ${el.name}</p>
+                <div class="information"><a href="/home/students/${el.id}"><button>عرض المعلومات</button></a>
+              `;
+              document.querySelector('.students').append(student);
+          })
+        }
+        else {
+          document.querySelector('.std-nums .digit').innerText = `${value.length} طالب`
+          document.querySelector('.students').innerHTML += `<p class='noStds'>لا يوجد طلاب</p>`
+        }
+        })
+        .catch(err => console.log(err));
+    </script>
+  </body>
+</html>

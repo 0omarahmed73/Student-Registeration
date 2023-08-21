@@ -125,6 +125,10 @@ app.get('/home/done', (req, res) => {
   }
 })
 
+app.get('/about' , (req,res) => {
+  res.render('about' , { name: req.session.username, status: req.session.status, img: req.session.img, title: 'About Us', department: req.session.department })
+})
+
 
 app.use((req, res) => {
 

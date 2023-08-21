@@ -6,7 +6,7 @@ const dbConnection = mysql.createConnection({
   host : 'sql209.liveblog365.com',
   user : 'lblog_34866162',
   password : 'rf56nyugakk',
-  database : 'lblog_34866162_studentReg',
+  database : 'studentReg',
   port : 3306
 });
 

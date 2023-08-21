@@ -3,10 +3,10 @@ const mysql = require('mysql');
 const app = express();
 
 const dbConnection = mysql.createConnection({
-  host : 'sql209.liveblog365.com',
-  user : 'lblog_34866162',
-  password : 'rf56nyugakk',
-  database : 'studentReg',
+  host : 'db4free.net',
+  user : 'omarahmedsaeed73',
+  password : 'Oo123456',
+  database : 'studentregistera',
   port : 3306
 });
 

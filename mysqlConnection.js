@@ -3,10 +3,10 @@ const mysql = require('mysql');
 const app = express();
 
 const dbConnection = mysql.createConnection({
-  host : 'db4free.net',
-  user : 'omarahmedsaeed73',
-  password : 'Oo123456',
-  database : 'studentregistera',
+  host : 'bs323llucaszxkvbo2l8-mysql.services.clever-cloud.com',
+  user : 'u5ey4qjtoigvelan',
+  password : 'Mrr3e3gJ7APkbHYYVQkb',
+  database : 'bs323llucaszxkvbo2l8',
   port : 3306
 });
 
